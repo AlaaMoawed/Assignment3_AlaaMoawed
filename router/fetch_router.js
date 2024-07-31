@@ -4,6 +4,10 @@ const router = express.Router();
 
 const Image = require("../models/file")
 
+
+
+
+
 router.get("/", (req, res) => {
   Image.aggregate([{ $sample: { size: 1 } }])
     .then((randomImage) => {
@@ -18,6 +22,10 @@ router.get("/", (req, res) => {
       res.status(500).send("Error fetching file.");
     });
 });
+
+
+
+
 
 router.get("/multiple", (req, res) => {
   const count = parseInt(req.query.count) || 1;
@@ -34,6 +42,11 @@ router.get("/multiple", (req, res) => {
         res.status(500).send("Error fetching file.");
       });
   });
+  
+
+
+
+
   
   router.get("/all/pages/:index", (req, res) => {
     const pageIndex = parseInt(req.params.index, 10);
@@ -77,6 +90,9 @@ router.get("/multiple", (req, res) => {
       });
   });
   
+
+
+
 
   router.get("/all", (req, res) => {
     Image.find()

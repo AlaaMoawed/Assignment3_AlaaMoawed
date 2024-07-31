@@ -22,6 +22,9 @@ router
   .get((req, res) => {
     res.sendFile(path.join(__dirname, "../views", "upload-multiple.html"));
   })
+
+
+  
   .post(upload.array("file", 100), (req, res) => {
     if (!req.files || req.files.length === 0) {
       return res.status(400).send("No files uploaded.");
